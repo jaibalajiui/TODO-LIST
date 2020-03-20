@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h1>To Do List</h1>
+      </div>
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>Task List</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+          class=""
+          *ngFor="let val of todo"
+          [ngClass]="myclass"
+          appHighlight
+          >
+            <td>
+              <div>
+                <input type="checkbox" name="remember" required> {{val}}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-group">
+            <label> Enter the item </label>
+            <input
+              [(ngModel)]="item"
+              class="form-control input-lg"
+              type="text"
+              placeholder="Enter the task"
+            >
+            <br>
+            <button
+              class="btn btn-primary form-control"
+              (click)="addItem()"
+              [disabled]="item == null"
+            > + Add Task </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

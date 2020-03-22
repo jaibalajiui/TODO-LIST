@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-
+import {Task} from './task';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -8,18 +8,21 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class TodoComponent implements OnInit {
 
-  todo = [];
+  todo: Task[] = [];
   item: any = null;
   myclass: string;
   constructor() {
-    this.todo.push('Hi');
+    this.todo.push({
+        name: 'Hi',
+        isCompleted: false
+      });
   }
 
   ngOnInit(): void {
   }
 
   addItem(){
-    this.todo.push(this.item);
+    this.todo.push({name: this.item, isCompleted: false});
     this.item = null;
   }
 }

@@ -13,7 +13,7 @@ export class TodoComponent implements OnInit {
   myclass: string;
   constructor() {
     this.todo.push({
-        name: 'Hi',
+        title: 'Hi',
         isCompleted: false
       });
   }
@@ -22,7 +22,7 @@ export class TodoComponent implements OnInit {
   }
 
   addItem(){
-    this.todo.push({name: this.item, isCompleted: false});
+    this.todo.push({title: this.item, isCompleted: false});
     this.item = null;
   }
 }

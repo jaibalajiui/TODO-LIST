@@ -1,1 +1,7 @@
 .big-checkbox {width: 30px; height: 30px;}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  position:fixed;
+}

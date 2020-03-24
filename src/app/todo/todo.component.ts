@@ -21,6 +21,7 @@ export class TodoComponent implements OnInit {
   }
 
   addTask() {
+    console.log('addtask()');
     this.toDoService.addTodo({
       title: this.taskElement.nativeElement.value,
       isCompleted: false

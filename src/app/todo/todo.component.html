@@ -12,22 +12,34 @@
         </thead>
         <tbody>
           <tr
-          class=""
-          *ngFor="let task of todo"
-          [ngClass]="myclass"
-          appHighlight
+            class=""
+            *ngFor="let task of todoList"
+            appHighlight
           >
             <td>
               <div>
-                <input type="checkbox" name="remember" required> {{task.title}}
+                <input
+                  type="checkbox"
+                  name="remember"
+                  required
+                  [checked]="task.isCompleted"
+                  (change)="task.isCompleted=true"
+                >
+                  <span *ngIf="!task.isCompleted else strikeCheckBox"> {{task.title}} </span>
+                  <ng-template #strikeCheckBox>
+                    <span>
+                      <s>
+                        {{task.title}}
+                      </s>
+                    </span>
+                  </ng-template>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
       <div class="form-group">
-        <input
-          [(ngModel)]="item"
+        <input #todoTask
           class="form-control input-lg"
           type="text"
           placeholder="Enter the task"
@@ -35,8 +47,7 @@
         <br>
         <button
           class="btn btn-primary form-control"
-          (click)="addItem()"
-          [disabled]="item == null"
+          (click)="addTask()"
         > + Add Task </button>
       </div>
     </div>

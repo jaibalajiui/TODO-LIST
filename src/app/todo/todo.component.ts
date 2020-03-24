@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {Task} from './task';
+import {TodoService} from './todo.service';
+
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -8,21 +10,21 @@ import {Task} from './task';
 })
 export class TodoComponent implements OnInit {
 
-  todo: Task[] = [];
-  item: any = null;
-  myclass: string;
-  constructor() {
-    this.todo.push({
-        title: 'Hi',
-        isCompleted: false
-      });
+  @ViewChild('todoTask') taskElement: ElementRef;
+
+  todoList: Task[] = [];
+  constructor(private toDoService: TodoService) {
   }
 
   ngOnInit(): void {
+    this.todoList = this.toDoService.getTodo();
   }
 
-  addItem(){
-    this.todo.push({title: this.item, isCompleted: false});
-    this.item = null;
+  addTask() {
+    this.toDoService.addTodo({
+      title: this.taskElement.nativeElement.value,
+      isCompleted: false
+    });
+    this.taskElement.nativeElement.value = '';
   }
 }

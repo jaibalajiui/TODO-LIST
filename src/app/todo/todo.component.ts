@@ -17,15 +17,20 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.todoList = this.toDoService.getTodo();
+    this.todoList = this.toDoService.getTodoList();
+    this.toDoService.toDoListChanged.subscribe((toDoList) => {
+        this.todoList = toDoList;
+    });
   }
 
   addTask() {
     console.log('addtask()');
-    this.toDoService.addTodo({
-      title: this.taskElement.nativeElement.value,
-      isCompleted: false
-    });
-    this.taskElement.nativeElement.value = '';
+    if ( this.taskElement.nativeElement.value !== '') {
+      this.toDoService.addTodo({
+        title: this.taskElement.nativeElement.value,
+        isCompleted: false
+      });
+      this.taskElement.nativeElement.value = '';
+    }
   }
 }

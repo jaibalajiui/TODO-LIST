@@ -5,17 +5,32 @@
       <div class="jumbotron">
         <h1>To Do List</h1>
       </div>
-      <table class="table table-hover table-bordered">
+
+      <div class="form-group">
+        <input #todoTask
+          class="form-control input-lg"
+          type="text"
+          placeholder="Enter the task"
+          required
+        >
+        <br>
+        <button
+          type="submit"
+          class="btn btn-primary form-control btn-lg"
+          (click)="addTask()"
+        > + Add Task </button>
+      </div>
+      <table class="table table-hover table-bordered tableFixHead">
         <thead>
           <tr>
-            <th> Task List</th>
+            <th> Task List
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr
             class=""
             *ngFor="let task of todoList"
-
           >
             <td>
               <div>
@@ -39,20 +54,6 @@
           </tr>
         </tbody>
       </table>
-      <div class="form-group">
-        <input #todoTask
-          class="form-control input-lg"
-          type="text"
-          placeholder="Enter the task"
-          required
-        >
-        <br>
-        <button
-          type="submit"
-          class="btn btn-primary form-control footer btn-lg"
-          (click)="addTask()"
-        > + Add Task </button>
-      </div>
     </form>
     </div>
   </div>

@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Task } from './task';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  toDoListChanged = new Subject<Task[]>();
+  toDoListChanged = new BehaviorSubject<Task[]>([]);
   private toDoList: Task[];
   toDoItem: Task;
 
@@ -21,10 +21,6 @@ export class TodoService {
      this.toDoList.push({title: 'jai', isCompleted: false});
      this.toDoList.push({title: 'balaji', isCompleted: true});
      this.toDoListChanged.next(this.toDoList.slice());
-   }
-
-   getTodoList(): Task[] {
-     return this.toDoList.slice();
    }
 
    addTodo(todoVal: Task) {

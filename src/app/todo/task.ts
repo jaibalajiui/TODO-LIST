@@ -1,4 +1,6 @@
 export interface Task {
-  title: string;
-  isCompleted: boolean;
+  title: String;
+  isCompleted: Boolean;
+  dueDate?: Date;
+  notes?: string
 }

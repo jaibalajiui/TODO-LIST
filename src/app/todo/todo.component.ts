@@ -27,7 +27,8 @@ export class TodoComponent implements OnInit {
     if ( this.taskElement.nativeElement.value !== '') {
       this.toDoService.addTodo({
         title: this.taskElement.nativeElement.value,
-        isCompleted: false
+        isCompleted: false,
+        
       });
       this.taskElement.nativeElement.value = '';
     }

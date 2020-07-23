@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import {Task} from './task';
+import Task from './Task.model';
 import {TodoService} from './todo.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class TodoComponent implements OnInit {
 
   @ViewChild('todoTask') taskElement: ElementRef;
 
-  todoList: Task[] = [];
+  todoList: Task [] = [];
   constructor(private toDoService: TodoService) {
   }
 
@@ -28,7 +27,7 @@ export class TodoComponent implements OnInit {
       this.toDoService.addTodo({
         title: this.taskElement.nativeElement.value,
         isCompleted: false,
-        
+
       });
       this.taskElement.nativeElement.value = '';
     }

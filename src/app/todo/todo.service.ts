@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from './task';
+import Task  from './Task.model';
 import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -14,13 +14,6 @@ export class TodoService {
   constructor() {
     this.toDoList = [];
     this.toDoItem = null;
-    this.addFirst();
-   }
-
-   addFirst(){
-     this.toDoList.push({title: 'jai', isCompleted: false});
-     this.toDoList.push({title: 'balaji', isCompleted: true});
-     this.toDoListChanged.next(this.toDoList.slice());
    }
 
    addTodo(todoVal: Task) {
